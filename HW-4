@@ -1,0 +1,37 @@
+//Task 1:
+func fuelDistance(weight: Double, distance: Double, closure: (Double, Double) -> Double) {
+    print("Для полета на Европу потребуется \(closure(weight, distance)) горючего.")
+}
+func variableOne (weight: Double, distance: Double) -> Double {
+    let fuelOil: Double = Double(weight * distance * 9.8 / 15)
+    return fuelOil
+}
+func variableTwo (weight: Double, distance: Double) -> Double {
+    let fuelOil: Double = Double(weight * distance + 9.8 * 15 * 4)
+    return fuelOil
+}
+
+fuelDistance(weight: 150, distance: 628300000, closure: variableOne(weight:distance:))
+fuelDistance(weight: 150, distance: 628300000, closure: variableTwo(weight:distance:))
+
+//Task 2:
+let weight = 150.0
+let distance = 628300000.0
+
+let variableOneFuel: (Double, Double) -> Double = {
+    ($0 * $1 * 9.8 / 15)
+}
+
+let variableTwoFuel: (Double, Double) -> Double = {
+    ($0 * $1 + 9.8 * 15 * 4)
+}
+
+
+variableOneFuel(150.0, 628300000.0)
+variableTwoFuel(150.0, 628300000.0)
+
+//Task 3*:
+fuelDistance(weight: 150, distance: 628300000, closure: {$0 * $1 / 9.8 * 27})
+/*
+ Ключеове слово "param" исчезло потому что в примере замыкание было только определено, но не объявлено.
+ */
