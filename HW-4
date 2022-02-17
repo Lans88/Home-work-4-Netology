@@ -2,17 +2,17 @@
 func fuelDistance(weight: Double, distance: Double, closure: (Double, Double) -> Double) {
     print("Для полета на Европу потребуется \(closure(weight, distance)) горючего.")
 }
-func variableOne (weight: Double, distance: Double) -> Double {
-    let fuelOil: Double = Double(weight * distance * 9.8 / 15)
-    return fuelOil
-}
-func variableTwo (weight: Double, distance: Double) -> Double {
-    let fuelOil: Double = Double(weight * distance + 9.8 * 15 * 4)
-    return fuelOil
+
+let variableOne = { (weight: Double, distance: Double) -> Double in
+    return (weight * distance * 9.8 / 15)
+    
 }
 
-fuelDistance(weight: 150, distance: 628300000, closure: variableOne(weight:distance:))
-fuelDistance(weight: 150, distance: 628300000, closure: variableTwo(weight:distance:))
+let variableTwo = { (weight: Double, distance: Double) -> Double in
+    return (weight * distance + 9.8 * 15 * 4)
+}
+fuelDistance(weight: 150.0, distance: 628300000.0, closure: variableOne)
+fuelDistance(weight: 150.0, distance: 628300000.0, closure: variableTwo)
 
 //Task 2:
 let weight = 150.0
